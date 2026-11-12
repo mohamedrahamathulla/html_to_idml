@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>html2idml Converter</title>
+<link rel="stylesheet" href="/static/app.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23d6336c'/%3E%3Ctext x='16' y='22' font-size='15' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EId%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo">Id</span><div><strong>html2idml</strong><small>HTML → InDesign IDML</small></div></div>
+  <div class="top-actions">
+    <button class="btn ghost" id="themeBtn" title="Toggle light/dark">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <button class="btn primary block" id="newBtn">＋ New conversion</button>
+    <input class="search" id="jobSearch" placeholder="Search jobs…">
+    <div class="jobs-head"><span>Jobs</span><span id="jobCount" class="muted"></span></div>
+    <ul id="jobList" class="job-list"></ul>
+  </aside>
+
+  <main id="main">
+    <!-- ======================= NEW CONVERSION ======================= -->
+    <section id="newView" class="view">
+      <h1>New conversion</h1>
+      <p class="muted">Upload a page with its CSS, images and fonts. Everything it references is packaged into the IDML.</p>
+
+      <div class="card">
+        <div class="tabs" id="srcTabs">
+          <button data-kind="files" class="active">Files</button>
+          <button data-kind="folder">Folder</button>
+          <button data-kind="zip">Zip</button>
+          <button data-kind="url">URL</button>
+          <button data-kind="paste">Paste HTML</button>
+        </div>
+
+        <div class="src-pane" data-pane="files folder zip">
+          <div class="dropzone" id="dropzone">
+            <div class="dz-icon">⬆</div>
+            <div id="dzText"><strong>Drop files or a folder here</strong><br><span class="muted">or click to choose: HTML plus its CSS, images and fonts</span></div>
+            <input type="file" id="fileInput" multiple hidden>
+            <input type="file" id="folderInput" webkitdirectory directory multiple hidden>
+            <input type="file" id="zipInput" accept=".zip" hidden>
+          </div>
+          <div id="fileSummary" class="file-summary hidden">
+            <div class="row between"><strong id="fileCountTxt"></strong><button class="btn ghost small" id="clearFiles">Clear</button></div>
+            <ul id="fileList" class="file-list"></ul>
+            <div class="row gap" id="entryRow">
+              <label>Main HTML file <select id="entrySelect"></select></label>
+              <label class="check"><input type="checkbox" id="allEntries"> Convert every HTML file</label>
+            </div>
+          </div>
+        </div>
+        <div class="src-pane hidden" data-pane="url">
+          <label>Page URL <input id="urlInput" type="url" placeholder="https://example.com/article.html"></label>
+          <p class="muted small">The page, its stylesheets and images are downloaded on this computer.</p>
+        </div>
+        <div class="src-pane hidden" data-pane="paste">
+          <label>HTML <textarea id="htmlInput" rows="10" class="mono" placeholder="<html>…</html>"></textarea></label>
+        </div>
+        <label class="mt">Job name <input id="jobName" placeholder="optional"></label>
+      </div>
+
+      <form id="optForm" class="options">
+        <details class="card" open>
+          <summary>Page setup</summary>
+          <div class="grid">
+            <label>Page size
+              <select name="page_size">
+                <option value="css">From CSS @page (else A4)</option>
+                <option>A4</option><option>A5</option><option>A3</option><option>Letter</option>
+                <option>Legal</option><option>Tabloid</option><option>B5</option><option value="custom">Custom…</option>
+              </select></label>
+            <label class="custom-size hidden">Width <input name="page_width" placeholder="210mm"></label>
+            <label class="custom-size hidden">Height <input name="page_height" placeholder="297mm"></label>
+            <label>Orientation <select name="orientation"><option value="">Auto</option><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></label>
+            <label>Margins <input name="margins" placeholder="From CSS, e.g. 20mm or 20mm 15mm"></label>
+            <label>Columns <input name="columns" type="number" min="1" max="12" value="1"></label>
+            <label>Gutter <input name="gutter" placeholder="12pt"></label>
+            <label>Pages <input name="page_count" type="number" min="0" placeholder="auto"></label>
+            <label class="check"><input type="checkbox" name="facing_pages"> Facing pages (spreads)</label>
+          </div>
+        </details>
+
+        <details class="card">
+          <summary>CSS &amp; fonts</summary>
+          <div class="grid">
+            <label>CSS media <select name="media"><option value="screen">screen (as in the browser)</option><option value="print">print</option></select></label>
+            <label>Viewport width (px) <input name="viewport_width" type="number" value="1280"></label>
+            <label>Font weights <select name="weight_mode"><option value="simple">Regular / Bold</option><option value="full">Full (Light, Medium, SemiBold…)</option></select></label>
+            <label class="check"><input type="checkbox" name="check_installed" checked> Use first installed font of each CSS stack</label>
+            <label class="check"><input type="checkbox" name="ignore_body_margin" checked> Ignore body margin (page margins instead)</label>
+            <label class="check"><input type="checkbox" name="hyphenation"> Hyphenation</label>
+          </div>
+          <div class="grid two">
+            <label>Font mapping <span class="muted small">CSS font = InDesign font, one per line</span>
+              <textarea name="font_map" rows="5" class="mono" placeholder="Segoe UI = Source Sans 3&#10;Georgia = Minion Pro"></textarea></label>
+            <label>Extra CSS <span class="muted small">applied last</span>
+              <textarea name="user_css" rows="5" class="mono" placeholder="nav, footer { display: none }"></textarea></label>
+          </div>
+        </details>
+
+        <details class="card">
+          <summary>Style names</summary>
+          <div class="grid two">
+            <label>Paragraph styles <span class="muted small">CSS selector = style name</span>
+              <textarea name="style_names" rows="5" class="mono" placeholder="h1 = Heading 1&#10;h2 = Heading 2&#10;p = Body Text&#10;.note p = Note"></textarea></label>
+            <label>Character styles
+              <textarea name="char_style_names" rows="5" class="mono" placeholder="strong, b = Bold&#10;em, i = Italic&#10;a = Hyperlink"></textarea></label>
+          </div>
+        </details>
+
+        <details class="card">
+          <summary>Images, links &amp; package</summary>
+          <div class="grid">
+            <label class="check"><input type="checkbox" name="embed_images" checked> Embed images in the IDML</label>
+            <label class="check"><input type="checkbox" name="package_fonts" checked> Package font files (Document fonts)</label>
+            <label class="check"><input type="checkbox" name="zip_package" checked> Create package zip</label>
+            <label class="check"><input type="checkbox" name="download_remote"> Download http(s) images &amp; CSS</label>
+            <label class="check"><input type="checkbox" name="inline_svg" checked> Place inline SVG</label>
+            <label class="check"><input type="checkbox" name="hyperlinks" checked> Hyperlinks</label>
+          </div>
+        </details>
+
+        <details class="card">
+          <summary>InDesign</summary>
+          <div class="grid">
+            <label>Target version <select name="dom_version"><option value="16.0">InDesign 2021 and newer</option><option value="15.0">2020</option><option value="14.0">CC 2019</option><option value="13.0">CC 2018</option><option value="8.0">CS6</option></select></label>
+            <label>Colours <select name="color_space"><option>RGB</option><option>CMYK</option></select></label>
+            <label>Ruler units <select name="ruler_units"><option>Points</option><option>Millimeters</option><option>Inches</option><option>Picas</option><option>Centimeters</option></select></label>
+          </div>
+        </details>
+
+        <details class="card">
+          <summary>Advanced YAML</summary>
+          <p class="muted small">Any converter option (see examples/config.example.yaml). The fields above override it.</p>
+          <textarea name="advanced_yaml" rows="6" class="mono" placeholder="styles:&#10;  overrides:&#10;    Heading 1: { font_size: 30 }"></textarea>
+        </details>
+      </form>
+
+      <div class="actions sticky">
+        <button class="btn ghost" id="resetOpts" type="button">Reset options</button>
+        <div class="upload-progress hidden" id="uploadProg"><div class="bar"><i></i></div><span></span></div>
+        <button class="btn primary big" id="convertBtn">Convert to IDML</button>
+      </div>
+    </section>
+
+    <!-- ======================= JOB VIEW ======================= -->
+    <section id="jobView" class="view hidden">
+      <div class="job-head">
+        <div>
+          <h1 id="jvName"></h1>
+          <div class="row gap muted small"><span id="jvStatus" class="chip"></span><span id="jvMeta"></span></div>
+        </div>
+        <div class="row gap">
+          <button class="btn ghost" id="rerunBtn">Re-run</button>
+          <button class="btn ghost danger" id="deleteBtn">Delete</button>
+        </div>
+      </div>
+
+      <div class="card progress-card" id="progCard">
+        <div class="row between"><strong id="jvStage"></strong><span id="jvPct" class="muted"></span></div>
+        <div class="bar big"><i id="jvBar"></i></div>
+        <div id="jvError" class="error hidden"></div>
+      </div>
+
+      <div id="resultsArea"></div>
+
+      <div class="card">
+        <div class="tabs" id="jobTabs">
+          <button data-tab="overview" class="active">Overview</button>
+          <button data-tab="styles">Styles editor</button>
+          <button data-tab="outline">Outline</button>
+          <button data-tab="assets">Assets</button>
+          <button data-tab="compare">Source page</button>
+          <button data-tab="log">Log</button>
+        </div>
+        <div class="row gap tab-tools" id="resultPicker"></div>
+        <div class="tab" data-tab="overview"></div>
+        <div class="tab hidden" data-tab="styles"></div>
+        <div class="tab hidden" data-tab="outline"></div>
+        <div class="tab hidden" data-tab="assets"></div>
+        <div class="tab hidden" data-tab="compare"></div>
+        <div class="tab hidden" data-tab="log"><pre id="logBox" class="log"></pre></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

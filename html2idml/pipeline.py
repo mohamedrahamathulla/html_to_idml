@@ -118,9 +118,15 @@ def _page_setup(cfg: Config, collector: StyleCollector) -> PageSetup:
 
 def html_to_ir(source: Union[str, Path], out_dir: Union[str, Path], config: ConfigLike = None,
                html_text: Optional[str] = None, plugins: Optional[List[str]] = None,
-               on_warning: Optional[Callable[[str], None]] = None) -> Document:
-    """Parse HTML+CSS into an IR Document.  Assets are copied into ``out_dir``."""
+               on_warning: Optional[Callable[[str], None]] = None,
+               on_progress: Optional[Callable[[str, float], None]] = None) -> Document:
+    """Parse HTML+CSS into an IR Document.  Assets are copied into ``out_dir``.
+
+    ``on_progress(stage, fraction)`` is called as the conversion advances (0.0 .. 1.0).
+    """
     t0 = time.time()
+    progress = on_progress or (lambda stage, frac: None)
+    progress("Reading HTML", 0.05)
     cfg = _config(config)
     warn = Warnings(callback=on_warning)
     out_dir = Path(out_dir)
@@ -165,6 +171,7 @@ def html_to_ir(source: Union[str, Path], out_dir: Union[str, Path], config: Conf
             if r is not None:
                 root = r
 
+    progress("Loading stylesheets", 0.12)
     css_cfg = cfg["css"]
     vw = float(css_cfg.get("viewport_width") or 1280)
     vh = float(css_cfg.get("viewport_height") or 800)
@@ -194,6 +201,7 @@ def html_to_ir(source: Union[str, Path], out_dir: Union[str, Path], config: Conf
     if css_cfg.get("user_css"):
         collector.add_css(css_cfg["user_css"], base, origin=1)
 
+    progress("Page setup", 0.25)
     page = _page_setup(cfg, collector)
     doc = Document(page=page)
     title = root.findtext(".//title")
@@ -232,13 +240,16 @@ def html_to_ir(source: Union[str, Path], out_dir: Union[str, Path], config: Conf
             assets.font(best, fbase, fam)
 
     viewport_pt = (vw * 0.75, vh * 0.75)
+    progress(f"Applying {len(collector.rules)} CSS rules", 0.3)
     cascade = Cascade(root, collector, viewport_pt, warn)
     fonts = FontResolver(font_map=fcfg.get("map"), generic=fcfg.get("generic"),
                          default_family=fcfg.get("default_family", "Times New Roman"),
                          style_names=fcfg.get("style_names"), weight_mode=fcfg.get("weight_mode", "simple"),
                          check_installed=bool(fcfg.get("check_installed", True)),
                          webfont_families=webfonts)
+    progress("Building paragraphs, tables and images", 0.5)
     Builder(root, cascade, cfg, doc, assets, fonts, base, warn).build()
+    progress("Packaging fonts", 0.65)
     doc.metadata["fonts_used"] = {k: sorted(v) for k, v in fonts.used.items()}
     if fcfg.get("package_fonts", True):
         webfont_fams = {a.family.lower() for a in doc.assets.values() if a.kind == "font"}
@@ -268,9 +279,12 @@ def html_to_ir(source: Union[str, Path], out_dir: Union[str, Path], config: Conf
 
 
 def ir_to_idml(doc: Document, out_path: Union[str, Path], config: ConfigLike = None,
-               on_warning: Optional[Callable[[str], None]] = None) -> Dict[str, Any]:
+               on_warning: Optional[Callable[[str], None]] = None,
+               on_progress: Optional[Callable[[str, float], None]] = None) -> Dict[str, Any]:
     """Write the IR to an .idml file (+ fit-pages script, report, optional zip package)."""
     t0 = time.time()
+    progress = on_progress or (lambda stage, frac: None)
+    progress("Estimating pages", 0.72)
     cfg = _config(config)
     out_path = Path(out_path)
     if out_path.suffix.lower() != ".idml":
@@ -279,6 +293,7 @@ def ir_to_idml(doc: Document, out_path: Union[str, Path], config: ConfigLike = N
     warnings = warn = Warnings(doc.warnings, callback=on_warning)
 
     n_pages = int(doc.page.page_count or estimate_pages(doc))
+    progress(f"Writing IDML ({n_pages} pages)", 0.78)
     stats = IDMLWriter(doc, cfg, warn).write(out_path, n_pages)
     ocfg = cfg["output"]
     outputs = {"idml": str(out_path)}
@@ -307,6 +322,7 @@ def ir_to_idml(doc: Document, out_path: Union[str, Path], config: ConfigLike = N
         rp.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
         outputs["report"] = str(rp)
     if ocfg.get("zip_package"):
+        progress("Creating package zip", 0.9)
         zp = out_path.with_name(out_path.stem + "-package.zip")
         with zipfile.ZipFile(zp, "w", zipfile.ZIP_DEFLATED) as z:
             z.write(out_path, out_path.name)
@@ -321,20 +337,24 @@ def ir_to_idml(doc: Document, out_path: Union[str, Path], config: ConfigLike = N
                     try:
                         rel = ap.relative_to(out_path.parent)
                     except ValueError:
-                        folder = ocfg.get("links_dir", "Links") if a.kind == "image" else                             ocfg.get("fonts_dir", "Document fonts")
+                        folder = (ocfg.get("links_dir", "Links") if a.kind == "image"
+                                  else ocfg.get("fonts_dir", "Document fonts"))
                         rel = Path(folder) / ap.name
                     z.write(ap, str(rel))
         outputs["package"] = str(zp)
+    progress("Done", 1.0)
     return report
 
 
 def convert(source: Union[str, Path], out_path: Union[str, Path], config: ConfigLike = None,
             plugins: Optional[List[str]] = None,
-            on_warning: Optional[Callable[[str], None]] = None) -> Dict[str, Any]:
+            on_warning: Optional[Callable[[str], None]] = None,
+            on_progress: Optional[Callable[[str, float], None]] = None) -> Dict[str, Any]:
     """HTML file/URL -> .idml in one call. Returns the report dict."""
     cfg = _config(config)
     out_path = Path(out_path)
-    doc = html_to_ir(source, out_path.parent, cfg, plugins=plugins, on_warning=on_warning)
-    report = ir_to_idml(doc, out_path, cfg, on_warning=on_warning)
+    doc = html_to_ir(source, out_path.parent, cfg, plugins=plugins, on_warning=on_warning,
+                     on_progress=on_progress)
+    report = ir_to_idml(doc, out_path, cfg, on_warning=on_warning, on_progress=on_progress)
     report["parse_seconds"] = doc.metadata.get("parse_seconds")
     return report

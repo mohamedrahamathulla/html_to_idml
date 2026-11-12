@@ -16,7 +16,28 @@ HTML + CSS ─► CSS cascade (browser-like computed styles)
 pip install -r requirements.txt
 ```
 
-## Use
+## Web interface
+
+```bash
+python -m html2idml serve
+```
+
+Opens http://127.0.0.1:8765 in your browser:
+
+- **Upload**: files, a whole folder, a zipped website, a URL, or pasted HTML (drag and drop works).
+- **Options**: page size and margins, columns, CSS media, font mapping, style names, image and font
+  packaging, InDesign version, colour space, plus a free-form YAML box for any option.
+- **Tracking**: every job is listed with its live stage and progress; jobs survive a restart
+  (stored in `html2idml-work/`).
+- **Results**: page/paragraph/table/image/style counts, warnings, fonts used, and downloads
+  (package zip, .idml, fit-pages script, report, IR JSON; all documents at once for multi-page sites).
+- **Styles editor**: change fonts, sizes, leading, colours, alignment, spacing, rename styles,
+  change "based on", edit page size and margins, then **Save & rebuild** - the IDML is regenerated.
+- **Outline / Assets / Source page / Log** tabs to check the mapping against the original page.
+
+Options: `--port 9000`, `--host 0.0.0.0` (share on your network), `--workdir D:/jobs`, `--workers 4`.
+
+## Command line
 
 ```bash
 python -m html2idml convert page.html -o out/page.idml
@@ -126,4 +147,5 @@ Any IR prop named `"idml:<Attribute>"` is written to the IDML verbatim, e.g.
 
 ```bash
 python tests/test_html2idml.py
+python tests/test_web.py
 ```

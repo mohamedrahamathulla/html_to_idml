@@ -4,6 +4,7 @@
     python -m html2idml extract page.html -o out/page.ir.json     # HTML -> editable IR
     python -m html2idml build   out/page.ir.json -o out/page.idml # edited IR -> IDML
     python -m html2idml validate out/page.idml
+    python -m html2idml serve                                     # web UI on http://127.0.0.1:8765
     python -m html2idml page.html                                 # shorthand for convert
 """
 from __future__ import annotations
@@ -79,7 +80,7 @@ def _print_report(rep, quiet):
 
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
-    if argv and argv[0] not in ("convert", "extract", "build", "validate", "-h", "--help"):
+    if argv and argv[0] not in ("convert", "extract", "build", "validate", "serve", "-h", "--help"):
         argv.insert(0, "convert")
     ap = argparse.ArgumentParser(prog="html2idml", description="HTML + CSS + assets -> InDesign IDML")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -103,7 +104,18 @@ def main(argv=None):
     p = sub.add_parser("validate", help="check an .idml package")
     p.add_argument("input")
 
+    p = sub.add_parser("serve", help="start the web interface")
+    p.add_argument("--host", default="127.0.0.1", help="use 0.0.0.0 to share on your network")
+    p.add_argument("--port", type=int, default=8765)
+    p.add_argument("--workdir", default="html2idml-work", help="where jobs are stored")
+    p.add_argument("--workers", type=int, default=2, help="parallel conversions")
+    p.add_argument("--no-browser", action="store_true")
+
     a = ap.parse_args(argv)
+    if a.cmd == "serve":
+        from .web import serve
+        serve(a.host, a.port, a.workdir, a.workers, open_browser=not a.no_browser)
+        return 0
     log = (lambda *x: None) if getattr(a, "quiet", False) else print
 
     if a.cmd == "validate":

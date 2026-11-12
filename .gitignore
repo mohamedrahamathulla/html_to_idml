@@ -1,0 +1,5 @@
+*.idml.tmp
+*.pyc
+__pycache__/
+html2idml-work/
+out/
