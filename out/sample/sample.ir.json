@@ -1,0 +1,2048 @@
+{
+ "page": {
+  "width": 595.276,
+  "height": 841.89,
+  "margin_top": 51.0236220472441,
+  "margin_bottom": 56.69291338582678,
+  "margin_left": 45.35433070866142,
+  "margin_right": 45.35433070866142,
+  "columns": 1,
+  "gutter": 12.0,
+  "facing_pages": false,
+  "page_count": null
+ },
+ "colors": {
+  "R=34 G=34 B=34": {
+   "name": "R=34 G=34 B=34",
+   "space": "RGB",
+   "values": [
+    34,
+    34,
+    34
+   ]
+  },
+  "R=30 G=90 B=160": {
+   "name": "R=30 G=90 B=160",
+   "space": "RGB",
+   "values": [
+    30,
+    90,
+    160
+   ]
+  },
+  "R=85 G=85 B=85": {
+   "name": "R=85 G=85 B=85",
+   "space": "RGB",
+   "values": [
+    85,
+    85,
+    85
+   ]
+  },
+  "R=204 G=0 B=0": {
+   "name": "R=204 G=0 B=0",
+   "space": "RGB",
+   "values": [
+    204,
+    0,
+    0
+   ]
+  },
+  "R=255 G=255 B=0": {
+   "name": "R=255 G=255 B=0",
+   "space": "RGB",
+   "values": [
+    255,
+    255,
+    0
+   ]
+  },
+  "R=153 G=153 B=153": {
+   "name": "R=153 G=153 B=153",
+   "space": "RGB",
+   "values": [
+    153,
+    153,
+    153
+   ]
+  },
+  "R=240 G=180 B=40": {
+   "name": "R=240 G=180 B=40",
+   "space": "RGB",
+   "values": [
+    240,
+    180,
+    40
+   ]
+  },
+  "R=255 G=244 B=214": {
+   "name": "R=255 G=244 B=214",
+   "space": "RGB",
+   "values": [
+    255,
+    244,
+    214
+   ]
+  },
+  "R=255 G=255 B=255": {
+   "name": "R=255 G=255 B=255",
+   "space": "RGB",
+   "values": [
+    255,
+    255,
+    255
+   ]
+  },
+  "R=204 G=204 B=204": {
+   "name": "R=204 G=204 B=204",
+   "space": "RGB",
+   "values": [
+    204,
+    204,
+    204
+   ]
+  },
+  "R=245 G=248 B=252": {
+   "name": "R=245 G=248 B=252",
+   "space": "RGB",
+   "values": [
+    245,
+    248,
+    252
+   ]
+  },
+  "R=68 G=68 B=68": {
+   "name": "R=68 G=68 B=68",
+   "space": "RGB",
+   "values": [
+    68,
+    68,
+    68
+   ]
+  },
+  "R=242 G=242 B=242": {
+   "name": "R=242 G=242 B=242",
+   "space": "RGB",
+   "values": [
+    242,
+    242,
+    242
+   ]
+  },
+  "R=128 G=128 B=128": {
+   "name": "R=128 G=128 B=128",
+   "space": "RGB",
+   "values": [
+    128,
+    128,
+    128
+   ]
+  }
+ },
+ "paragraph_styles": {
+  "Body": {
+   "name": "Body",
+   "kind": "paragraph",
+   "based_on": null,
+   "props": {
+    "align": "left",
+    "space_before": 0.0,
+    "space_after": 0.0,
+    "left_indent": 0.0,
+    "right_indent": 0.0,
+    "first_line_indent": 0.0,
+    "keep_with_next": 0,
+    "keep_together": false,
+    "start_paragraph": "anywhere",
+    "list_type": "none",
+    "bullet_char": 8226,
+    "numbering_format": "1, 2, 3, 4...",
+    "numbering_start": null,
+    "numbering_continue": true,
+    "list_level": 1,
+    "shading": null,
+    "border": null,
+    "rule_above": null,
+    "rule_below": null,
+    "hyphenation": false,
+    "font_family": "Segoe UI",
+    "font_style": "Regular",
+    "font_size": 11.25,
+    "leading": 16.875,
+    "color": "R=34 G=34 B=34",
+    "tracking": 0.0,
+    "caps": "normal",
+    "position": "normal",
+    "underline": false,
+    "strike": false,
+    "highlight": null,
+    "no_break": false
+   },
+   "source": "body"
+  },
+  "header": {
+   "name": "header",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "leading": "auto"
+   },
+   "source": "header"
+  },
+  "h1": {
+   "name": "h1",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "keep_with_next": 2,
+    "font_family": "Georgia",
+    "font_style": "Bold",
+    "font_size": 27.0,
+    "leading": 40.5,
+    "color": "R=30 G=90 B=160"
+   },
+   "source": "h1"
+  },
+  "p.lead": {
+   "name": "p.lead",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "space_before": 13.5,
+    "font_style": "Italic",
+    "font_size": 13.5,
+    "leading": 20.25,
+    "color": "R=85 G=85 B=85"
+   },
+   "source": "p.lead"
+  },
+  "p": {
+   "name": "p",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "space_before": 11.25
+   },
+   "source": "p"
+  },
+  "h2": {
+   "name": "h2",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "space_before": 27.0,
+    "keep_with_next": 2,
+    "rule_below": {
+     "weight": 1.5,
+     "color": "R=240 G=180 B=40",
+     "offset": 7.219
+    },
+    "font_style": "Bold",
+    "font_size": 16.875,
+    "leading": 25.312,
+    "color": "R=30 G=90 B=160"
+   },
+   "source": "h2"
+  },
+  "ul li": {
+   "name": "ul li",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "left_indent": 30.0,
+    "first_line_indent": -16.875,
+    "list_type": "bullet"
+   },
+   "source": "li"
+  },
+  "ul li 2": {
+   "name": "ul li 2",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "left_indent": 60.0,
+    "first_line_indent": -16.875,
+    "list_type": "bullet",
+    "bullet_char": 9702,
+    "list_level": 2
+   },
+   "source": "li"
+  },
+  "ol li": {
+   "name": "ol li",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "left_indent": 30.0,
+    "first_line_indent": -16.875,
+    "list_type": "numbered"
+   },
+   "source": "li"
+  },
+  "figure.center": {
+   "name": "figure.center",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "align": "center",
+    "space_before": 11.25,
+    "left_indent": 30.0,
+    "right_indent": 30.0,
+    "leading": "auto"
+   },
+   "source": "figure.center"
+  },
+  "figcaption": {
+   "name": "figcaption",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "align": "center",
+    "left_indent": 30.0,
+    "right_indent": 30.0
+   },
+   "source": "figcaption"
+  },
+  "th": {
+   "name": "th",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "font_style": "Bold",
+    "color": "R=255 G=255 B=255"
+   },
+   "source": "th"
+  },
+  "td": {
+   "name": "td",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {},
+   "source": "td"
+  },
+  "table.data": {
+   "name": "table.data",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "space_before": 11.25,
+    "leading": "auto"
+   },
+   "source": "table.data"
+  },
+  "blockquote": {
+   "name": "blockquote",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "space_before": 11.25,
+    "left_indent": 22.5,
+    "right_indent": 30.0,
+    "font_style": "Italic",
+    "color": "R=68 G=68 B=68"
+   },
+   "source": "blockquote"
+  },
+  "pre": {
+   "name": "pre",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "space_before": 9.562,
+    "left_indent": 6.0,
+    "right_indent": 6.0,
+    "shading": "R=242 G=242 B=242",
+    "font_family": "Consolas",
+    "font_size": 9.562,
+    "leading": 12.431
+   },
+   "source": "pre"
+  },
+  "hr": {
+   "name": "hr",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "space_before": 5.625,
+    "rule_below": {
+     "weight": 0.75,
+     "color": "R=128 G=128 B=128",
+     "offset": 0.0
+    },
+    "font_size": 1.0,
+    "leading": 1.0
+   },
+   "source": "hr"
+  },
+  "Custom Body": {
+   "name": "Custom Body",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "align": "justify",
+    "space_before": 11.25
+   },
+   "source": "p"
+  },
+  "p.screen-only": {
+   "name": "p.screen-only",
+   "kind": "paragraph",
+   "based_on": "Body",
+   "props": {
+    "space_before": 11.25
+   },
+   "source": "p.screen-only"
+  }
+ },
+ "character_styles": {
+  "span.caps": {
+   "name": "span.caps",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "font_size": 9.0,
+    "tracking": 166.7,
+    "caps": "all_caps"
+   },
+   "source": "span.caps"
+  },
+  "strong": {
+   "name": "strong",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "font_style": "Bold"
+   },
+   "source": "strong"
+  },
+  "em": {
+   "name": "em",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "font_style": "Italic"
+   },
+   "source": "em"
+  },
+  "strong em": {
+   "name": "strong em",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "font_style": "Bold Italic"
+   },
+   "source": "strong em"
+  },
+  "u": {
+   "name": "u",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "underline": true
+   },
+   "source": "u"
+  },
+  "s": {
+   "name": "s",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "strike": true
+   },
+   "source": "s"
+  },
+  "span.red": {
+   "name": "span.red",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "font_style": "Bold",
+    "color": "R=204 G=0 B=0"
+   },
+   "source": "span.red"
+  },
+  "mark": {
+   "name": "mark",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "color": "Black",
+    "highlight": "R=255 G=255 B=0"
+   },
+   "source": "mark"
+  },
+  "span.highlight": {
+   "name": "span.highlight",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "highlight": "R=255 G=255 B=0"
+   },
+   "source": "span.highlight"
+  },
+  "sub": {
+   "name": "sub",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "position": "subscript"
+   },
+   "source": "sub"
+  },
+  "sup": {
+   "name": "sup",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "position": "superscript"
+   },
+   "source": "sup"
+  },
+  "a": {
+   "name": "a",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "color": "R=30 G=90 B=160",
+    "underline": true
+   },
+   "source": "a"
+  },
+  "code": {
+   "name": "code",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "font_family": "Consolas"
+   },
+   "source": "code"
+  },
+  "span.tag span.tag-before": {
+   "name": "span.tag span.tag-before",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "color": "R=153 G=153 B=153"
+   },
+   "source": "span.tag span.tag-before"
+  },
+  "b": {
+   "name": "b",
+   "kind": "character",
+   "based_on": null,
+   "props": {
+    "font_style": "Bold"
+   },
+   "source": "b"
+  }
+ },
+ "assets": {
+  "img1": {
+   "id": "img1",
+   "kind": "image",
+   "source": "img/logo.png",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Links\\logo.png",
+   "format": "PNG",
+   "width_px": 200.0,
+   "height_px": 200.0,
+   "ppi": 72.0,
+   "family": ""
+  },
+  "img2": {
+   "id": "img2",
+   "kind": "image",
+   "source": "img/hero.jpg",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Links\\hero.jpg",
+   "format": "JPEG",
+   "width_px": 1200.0,
+   "height_px": 600.0,
+   "ppi": 150.0,
+   "family": ""
+  },
+  "img3": {
+   "id": "img3",
+   "kind": "image",
+   "source": "img/photo.webp",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Links\\photo.png",
+   "format": "PNG",
+   "width_px": 320.0,
+   "height_px": 200.0,
+   "ppi": 72.0,
+   "family": ""
+  },
+  "img4": {
+   "id": "img4",
+   "kind": "image",
+   "source": "<svg>",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Links\\inline-svg.svg",
+   "format": "SVG",
+   "width_px": 24.0,
+   "height_px": 24.0,
+   "ppi": 72.0,
+   "family": ""
+  },
+  "font5": {
+   "id": "font5",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\segoeui.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\segoeui.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Segoe UI"
+  },
+  "font6": {
+   "id": "font6",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\seguibl.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\seguibl.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Segoe UI"
+  },
+  "font7": {
+   "id": "font7",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\seguibli.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\seguibli.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Segoe UI"
+  },
+  "font8": {
+   "id": "font8",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\segoeuib.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\segoeuib.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Segoe UI"
+  },
+  "font9": {
+   "id": "font9",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\segoeuiz.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\segoeuiz.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Segoe UI"
+  },
+  "font10": {
+   "id": "font10",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\segoeuii.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\segoeuii.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Segoe UI"
+  },
+  "font11": {
+   "id": "font11",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\segoeuil.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\segoeuil.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Segoe UI"
+  },
+  "font12": {
+   "id": "font12",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\seguili.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\seguili.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Segoe UI"
+  },
+  "font13": {
+   "id": "font13",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\seguisb.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\seguisb.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Segoe UI"
+  },
+  "font14": {
+   "id": "font14",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\seguisbi.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\seguisbi.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Segoe UI"
+  },
+  "font15": {
+   "id": "font15",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\segoeuisl.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\segoeuisl.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Segoe UI"
+  },
+  "font16": {
+   "id": "font16",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\seguisli.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\seguisli.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Segoe UI"
+  },
+  "font17": {
+   "id": "font17",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\georgia.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\georgia.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Georgia"
+  },
+  "font18": {
+   "id": "font18",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\georgiab.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\georgiab.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Georgia"
+  },
+  "font19": {
+   "id": "font19",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\georgiaz.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\georgiaz.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Georgia"
+  },
+  "font20": {
+   "id": "font20",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\georgiai.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\georgiai.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Georgia"
+  },
+  "font21": {
+   "id": "font21",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\consola.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\consola.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Consolas"
+  },
+  "font22": {
+   "id": "font22",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\consolab.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\consolab.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Consolas"
+  },
+  "font23": {
+   "id": "font23",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\consolaz.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\consolaz.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Consolas"
+  },
+  "font24": {
+   "id": "font24",
+   "kind": "font",
+   "source": "C:\\WINDOWS\\Fonts\\consolai.ttf",
+   "path": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\consolai.ttf",
+   "format": "TTF",
+   "width_px": 0.0,
+   "height_px": 0.0,
+   "ppi": 72.0,
+   "family": "Consolas"
+  }
+ },
+ "stories": [
+  {
+   "id": "main",
+   "blocks": [
+    {
+     "style": "header",
+     "runs": [
+      {
+       "asset": "img1",
+       "width": 36.0,
+       "height": 36.0,
+       "char_style": null,
+       "overrides": {},
+       "alt": "logo",
+       "type": "image"
+      },
+      {
+       "text": " ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "Annual Report 2026",
+       "char_style": "span.caps",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {},
+     "source": "header",
+     "type": "paragraph"
+    },
+    {
+     "style": "h1",
+     "runs": [
+      {
+       "text": "Converting HTML to InDesign",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {},
+     "source": "h1",
+     "type": "paragraph"
+    },
+    {
+     "style": "p.lead",
+     "runs": [
+      {
+       "text": "A complete, styled document — fonts, colours, images, tables and links — moved into IDML.",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {},
+     "source": "p.lead",
+     "type": "paragraph"
+    },
+    {
+     "style": "p",
+     "runs": [
+      {
+       "text": "This paragraph has ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "bold",
+       "char_style": "strong",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": ", ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "italic",
+       "char_style": "em",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": ", ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "bold italic",
+       "char_style": "strong em",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": ", ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "underline",
+       "char_style": "u",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": ", ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "strike",
+       "char_style": "s",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": ", ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "red semibold",
+       "char_style": "span.red",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": ", ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "marked",
+       "char_style": "mark",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": ", ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "highlighted",
+       "char_style": "span.highlight",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": ", H",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "2",
+       "char_style": "sub",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "O and E=mc",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "2",
+       "char_style": "sup",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": ". A ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "hyperlink to InDesign",
+       "char_style": "a",
+       "overrides": {},
+       "link": "https://www.adobe.com/products/indesign.html",
+       "type": "text"
+      },
+      {
+       "text": " and ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "inline code",
+       "char_style": "code",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": ". A forced line break above, then a ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "#",
+       "char_style": "span.tag span.tag-before",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "hashtag",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": ".",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {
+      "space_before": 13.5
+     },
+     "source": "p",
+     "type": "paragraph"
+    },
+    {
+     "style": "p",
+     "runs": [
+      {
+       "text": "Note:",
+       "char_style": "strong",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": " this box uses a background colour and a left border.",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {
+      "space_before": 28.5,
+      "left_indent": 12.0,
+      "right_indent": 9.0,
+      "shading": "R=255 G=244 B=214",
+      "border": {
+       "left": 3.0,
+       "right": 0.0,
+       "color": "R=240 G=180 B=40"
+      }
+     },
+     "source": "p",
+     "type": "paragraph"
+    },
+    {
+     "style": "h2",
+     "runs": [
+      {
+       "text": "Lists",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {
+      "space_before": 44.25
+     },
+     "source": "h2",
+     "type": "paragraph"
+    },
+    {
+     "style": "ul li",
+     "runs": [
+      {
+       "text": "First bullet item",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {
+      "space_before": 18.506
+     },
+     "source": "li",
+     "type": "paragraph"
+    },
+    {
+     "style": "ul li",
+     "runs": [
+      {
+       "text": "Second item with ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "bold",
+       "char_style": "b",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {},
+     "source": "li",
+     "type": "paragraph"
+    },
+    {
+     "style": "ul li 2",
+     "runs": [
+      {
+       "text": "Nested circle bullet",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {},
+     "source": "li",
+     "type": "paragraph"
+    },
+    {
+     "style": "ul li 2",
+     "runs": [
+      {
+       "text": "Another nested item",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {},
+     "source": "li",
+     "type": "paragraph"
+    },
+    {
+     "style": "ul li",
+     "runs": [
+      {
+       "text": "Third item",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {},
+     "source": "li",
+     "type": "paragraph"
+    },
+    {
+     "style": "ol li",
+     "runs": [
+      {
+       "text": "Numbered starts at three",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {
+      "space_before": 11.25,
+      "numbering_start": 3,
+      "numbering_continue": false
+     },
+     "source": "li",
+     "type": "paragraph"
+    },
+    {
+     "style": "ol li",
+     "runs": [
+      {
+       "text": "Four",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {},
+     "source": "li",
+     "type": "paragraph"
+    },
+    {
+     "style": "h2",
+     "runs": [
+      {
+       "text": "Image",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {},
+     "source": "h2",
+     "type": "paragraph"
+    },
+    {
+     "style": "figure.center",
+     "runs": [
+      {
+       "asset": "img2",
+       "width": 355.65,
+       "height": 177.83,
+       "char_style": null,
+       "overrides": {},
+       "alt": "hero",
+       "type": "image"
+      }
+     ],
+     "overrides": {
+      "space_before": 18.506
+     },
+     "source": "figure.center",
+     "type": "paragraph"
+    },
+    {
+     "style": "figcaption",
+     "runs": [
+      {
+       "text": "Figure 1. A placed JPEG at 150 ppi, scaled to 80% width.",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {},
+     "source": "figcaption",
+     "type": "paragraph"
+    },
+    {
+     "style": "p",
+     "runs": [
+      {
+       "text": "Inline WEBP (converted to PNG): ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "asset": "img3",
+       "width": 60.0,
+       "height": 37.5,
+       "char_style": null,
+       "overrides": {},
+       "alt": "",
+       "type": "image"
+      },
+      {
+       "text": " and inline SVG ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "asset": "img4",
+       "width": 18.0,
+       "height": 18.0,
+       "char_style": null,
+       "overrides": {},
+       "alt": "svg",
+       "type": "image"
+      },
+      {
+       "text": ".",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {
+      "leading": "auto"
+     },
+     "source": "p",
+     "type": "paragraph"
+    },
+    {
+     "style": "h2",
+     "runs": [
+      {
+       "text": "Table",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {},
+     "source": "h2",
+     "type": "paragraph"
+    },
+    {
+     "style": "table.data",
+     "rows": [
+      {
+       "cells": [
+        {
+         "blocks": [
+          {
+           "style": "th",
+           "runs": [
+            {
+             "text": "Region",
+             "char_style": null,
+             "overrides": {},
+             "link": null,
+             "type": "text"
+            }
+           ],
+           "overrides": {},
+           "source": "th",
+           "type": "paragraph"
+          }
+         ],
+         "row_span": 1,
+         "col_span": 1,
+         "props": {
+          "fill": "R=30 G=90 B=160",
+          "inset_top": 4.5,
+          "inset_right": 4.5,
+          "inset_bottom": 4.5,
+          "inset_left": 4.5,
+          "vertical_align": "middle",
+          "edge_top": null,
+          "edge_right": null,
+          "edge_bottom": null,
+          "edge_left": null
+         }
+        },
+        {
+         "blocks": [
+          {
+           "style": "th",
+           "runs": [
+            {
+             "text": "Q1",
+             "char_style": null,
+             "overrides": {},
+             "link": null,
+             "type": "text"
+            }
+           ],
+           "overrides": {},
+           "source": "th",
+           "type": "paragraph"
+          }
+         ],
+         "row_span": 1,
+         "col_span": 1,
+         "props": {
+          "fill": "R=30 G=90 B=160",
+          "inset_top": 4.5,
+          "inset_right": 4.5,
+          "inset_bottom": 4.5,
+          "inset_left": 4.5,
+          "vertical_align": "middle",
+          "edge_top": null,
+          "edge_right": null,
+          "edge_bottom": null,
+          "edge_left": null
+         }
+        },
+        {
+         "blocks": [
+          {
+           "style": "th",
+           "runs": [
+            {
+             "text": "Q2",
+             "char_style": null,
+             "overrides": {},
+             "link": null,
+             "type": "text"
+            }
+           ],
+           "overrides": {},
+           "source": "th",
+           "type": "paragraph"
+          }
+         ],
+         "row_span": 1,
+         "col_span": 1,
+         "props": {
+          "fill": "R=30 G=90 B=160",
+          "inset_top": 4.5,
+          "inset_right": 4.5,
+          "inset_bottom": 4.5,
+          "inset_left": 4.5,
+          "vertical_align": "middle",
+          "edge_top": null,
+          "edge_right": null,
+          "edge_bottom": null,
+          "edge_left": null
+         }
+        },
+        {
+         "blocks": [
+          {
+           "style": "th",
+           "runs": [
+            {
+             "text": "Total",
+             "char_style": null,
+             "overrides": {},
+             "link": null,
+             "type": "text"
+            }
+           ],
+           "overrides": {},
+           "source": "th",
+           "type": "paragraph"
+          }
+         ],
+         "row_span": 1,
+         "col_span": 1,
+         "props": {
+          "fill": "R=30 G=90 B=160",
+          "inset_top": 4.5,
+          "inset_right": 4.5,
+          "inset_bottom": 4.5,
+          "inset_left": 4.5,
+          "vertical_align": "middle",
+          "edge_top": null,
+          "edge_right": null,
+          "edge_bottom": null,
+          "edge_left": null
+         }
+        }
+       ],
+       "kind": "header",
+       "min_height": 3.0
+      },
+      {
+       "cells": [
+        {
+         "blocks": [
+          {
+           "style": "td",
+           "runs": [
+            {
+             "text": "North",
+             "char_style": null,
+             "overrides": {},
+             "link": null,
+             "type": "text"
+            }
+           ],
+           "overrides": {},
+           "source": "td",
+           "type": "paragraph"
+          }
+         ],
+         "row_span": 1,
+         "col_span": 1,
+         "props": {
+          "fill": null,
+          "inset_top": 3.75,
+          "inset_right": 4.5,
+          "inset_bottom": 3.75,
+          "inset_left": 4.5,
+          "vertical_align": "middle",
+          "edge_top": null,
+          "edge_right": null,
+          "edge_bottom": {
+           "weight": 0.75,
+           "color": "R=204 G=204 B=204"
+          },
+          "edge_left": null
+         }
+        },
+        {
+         "blocks": [
+          {
+           "style": "td",
+           "runs": [
+            {
+             "text": "120",
+             "char_style": null,
+             "overrides": {},
+             "link": null,
+             "type": "text"
+            }
+           ],
+           "overrides": {},
+           "source": "td",
+           "type": "paragraph"
+          }
+         ],
+         "row_span": 1,
+         "col_span": 1,
+         "props": {
+          "fill": null,
+          "inset_top": 3.75,
+          "inset_right": 4.5,
+          "inset_bottom": 3.75,
+          "inset_left": 4.5,
+          "vertical_align": "middle",
+          "edge_top": null,
+          "edge_right": null,
+          "edge_bottom": {
+           "weight": 0.75,
+           "color": "R=204 G=204 B=204"
+          },
+          "edge_left": null
+         }
+        },
+        {
+         "blocks": [
+          {
+           "style": "td",
+           "runs": [
+            {
+             "text": "140",
+             "char_style": null,
+             "overrides": {},
+             "link": null,
+             "type": "text"
+            }
+           ],
+           "overrides": {},
+           "source": "td",
+           "type": "paragraph"
+          }
+         ],
+         "row_span": 1,
+         "col_span": 1,
+         "props": {
+          "fill": null,
+          "inset_top": 3.75,
+          "inset_right": 4.5,
+          "inset_bottom": 3.75,
+          "inset_left": 4.5,
+          "vertical_align": "middle",
+          "edge_top": null,
+          "edge_right": null,
+          "edge_bottom": {
+           "weight": 0.75,
+           "color": "R=204 G=204 B=204"
+          },
+          "edge_left": null
+         }
+        },
+        {
+         "blocks": [
+          {
+           "style": "td",
+           "runs": [
+            {
+             "text": "260",
+             "char_style": null,
+             "overrides": {},
+             "link": null,
+             "type": "text"
+            }
+           ],
+           "overrides": {},
+           "source": "td",
+           "type": "paragraph"
+          }
+         ],
+         "row_span": 1,
+         "col_span": 1,
+         "props": {
+          "fill": null,
+          "inset_top": 3.75,
+          "inset_right": 4.5,
+          "inset_bottom": 3.75,
+          "inset_left": 4.5,
+          "vertical_align": "middle",
+          "edge_top": null,
+          "edge_right": null,
+          "edge_bottom": {
+           "weight": 0.75,
+           "color": "R=204 G=204 B=204"
+          },
+          "edge_left": null
+         }
+        }
+       ],
+       "kind": "body",
+       "min_height": 3.0
+      },
+      {
+       "cells": [
+        {
+         "blocks": [
+          {
+           "style": "td",
+           "runs": [
+            {
+             "text": "South",
+             "char_style": null,
+             "overrides": {},
+             "link": null,
+             "type": "text"
+            }
+           ],
+           "overrides": {},
+           "source": "td",
+           "type": "paragraph"
+          }
+         ],
+         "row_span": 1,
+         "col_span": 1,
+         "props": {
+          "fill": "R=245 G=248 B=252",
+          "inset_top": 3.75,
+          "inset_right": 4.5,
+          "inset_bottom": 3.75,
+          "inset_left": 4.5,
+          "vertical_align": "middle",
+          "edge_top": null,
+          "edge_right": null,
+          "edge_bottom": {
+           "weight": 0.75,
+           "color": "R=204 G=204 B=204"
+          },
+          "edge_left": null
+         }
+        },
+        {
+         "blocks": [
+          {
+           "style": "td",
+           "runs": [
+            {
+             "text": "98",
+             "char_style": null,
+             "overrides": {},
+             "link": null,
+             "type": "text"
+            }
+           ],
+           "overrides": {},
+           "source": "td",
+           "type": "paragraph"
+          }
+         ],
+         "row_span": 1,
+         "col_span": 1,
+         "props": {
+          "fill": "R=245 G=248 B=252",
+          "inset_top": 3.75,
+          "inset_right": 4.5,
+          "inset_bottom": 3.75,
+          "inset_left": 4.5,
+          "vertical_align": "middle",
+          "edge_top": null,
+          "edge_right": null,
+          "edge_bottom": {
+           "weight": 0.75,
+           "color": "R=204 G=204 B=204"
+          },
+          "edge_left": null
+         }
+        },
+        {
+         "blocks": [
+          {
+           "style": "td",
+           "runs": [
+            {
+             "text": "110",
+             "char_style": null,
+             "overrides": {},
+             "link": null,
+             "type": "text"
+            }
+           ],
+           "overrides": {},
+           "source": "td",
+           "type": "paragraph"
+          }
+         ],
+         "row_span": 1,
+         "col_span": 1,
+         "props": {
+          "fill": "R=245 G=248 B=252",
+          "inset_top": 3.75,
+          "inset_right": 4.5,
+          "inset_bottom": 3.75,
+          "inset_left": 4.5,
+          "vertical_align": "middle",
+          "edge_top": null,
+          "edge_right": null,
+          "edge_bottom": {
+           "weight": 0.75,
+           "color": "R=204 G=204 B=204"
+          },
+          "edge_left": null
+         }
+        },
+        {
+         "blocks": [
+          {
+           "style": "td",
+           "runs": [
+            {
+             "text": "208",
+             "char_style": null,
+             "overrides": {},
+             "link": null,
+             "type": "text"
+            }
+           ],
+           "overrides": {},
+           "source": "td",
+           "type": "paragraph"
+          }
+         ],
+         "row_span": 1,
+         "col_span": 1,
+         "props": {
+          "fill": "R=245 G=248 B=252",
+          "inset_top": 3.75,
+          "inset_right": 4.5,
+          "inset_bottom": 3.75,
+          "inset_left": 4.5,
+          "vertical_align": "middle",
+          "edge_top": null,
+          "edge_right": null,
+          "edge_bottom": {
+           "weight": 0.75,
+           "color": "R=204 G=204 B=204"
+          },
+          "edge_left": null
+         }
+        }
+       ],
+       "kind": "body",
+       "min_height": 3.0
+      },
+      {
+       "cells": [
+        {
+         "blocks": [
+          {
+           "style": "td",
+           "runs": [
+            {
+             "text": "Spanning three columns",
+             "char_style": "em",
+             "overrides": {},
+             "link": null,
+             "type": "text"
+            }
+           ],
+           "overrides": {},
+           "source": "td",
+           "type": "paragraph"
+          }
+         ],
+         "row_span": 1,
+         "col_span": 3,
+         "props": {
+          "fill": null,
+          "inset_top": 3.75,
+          "inset_right": 4.5,
+          "inset_bottom": 3.75,
+          "inset_left": 4.5,
+          "vertical_align": "middle",
+          "edge_top": null,
+          "edge_right": null,
+          "edge_bottom": {
+           "weight": 0.75,
+           "color": "R=204 G=204 B=204"
+          },
+          "edge_left": null
+         }
+        },
+        {
+         "blocks": [
+          {
+           "style": "td",
+           "runs": [
+            {
+             "text": "468",
+             "char_style": null,
+             "overrides": {},
+             "link": null,
+             "type": "text"
+            }
+           ],
+           "overrides": {},
+           "source": "td",
+           "type": "paragraph"
+          }
+         ],
+         "row_span": 1,
+         "col_span": 1,
+         "props": {
+          "fill": null,
+          "inset_top": 3.75,
+          "inset_right": 4.5,
+          "inset_bottom": 3.75,
+          "inset_left": 4.5,
+          "vertical_align": "middle",
+          "edge_top": null,
+          "edge_right": null,
+          "edge_bottom": {
+           "weight": 0.75,
+           "color": "R=204 G=204 B=204"
+          },
+          "edge_left": null
+         }
+        }
+       ],
+       "kind": "body",
+       "min_height": 3.0
+      }
+     ],
+     "column_widths": [
+      162.76,
+      99.98,
+      99.98,
+      141.84
+     ],
+     "overrides": {
+      "space_before": 18.506
+     },
+     "props": {
+      "border_top": null,
+      "border_right": null,
+      "border_bottom": null,
+      "border_left": null
+     },
+     "source": "table.data",
+     "type": "table"
+    },
+    {
+     "style": "blockquote",
+     "runs": [
+      {
+       "text": "“Design is intelligence made visible.” — Alina Wheeler",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {},
+     "source": "blockquote",
+     "type": "paragraph"
+    },
+    {
+     "style": "pre",
+     "runs": [
+      {
+       "text": "def hello():     print(\"pre-formatted   spacing kept\")",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {
+      "space_before": 17.25
+     },
+     "source": "pre",
+     "type": "paragraph"
+    },
+    {
+     "style": "hr",
+     "runs": [],
+     "overrides": {
+      "space_before": 15.5625
+     },
+     "source": "hr",
+     "type": "paragraph"
+    },
+    {
+     "style": "h2",
+     "runs": [
+      {
+       "text": "New chapter on a new page",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {
+      "start_paragraph": "next_page"
+     },
+     "source": "h2",
+     "type": "paragraph"
+    },
+    {
+     "style": "p",
+     "runs": [
+      {
+       "text": "Text after a CSS ",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": "break-before: page",
+       "char_style": "code",
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      },
+      {
+       "text": ".  Non-breaking space kept.",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {
+      "space_before": 18.506
+     },
+     "source": "p",
+     "type": "paragraph"
+    },
+    {
+     "style": "Custom Body",
+     "runs": [
+      {
+       "text": "This paragraph uses a style name forced from the HTML with data-idml-style, and a justification override from data-idml-props. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {},
+     "source": "p",
+     "type": "paragraph"
+    },
+    {
+     "style": "p.screen-only",
+     "runs": [
+      {
+       "text": "Visible on screen media.",
+       "char_style": null,
+       "overrides": {},
+       "link": null,
+       "type": "text"
+      }
+     ],
+     "overrides": {},
+     "source": "p.screen-only",
+     "type": "paragraph"
+    }
+   ]
+  }
+ ],
+ "metadata": {
+  "source": "examples/sample/sample.html",
+  "title": "html2idml Sample Report",
+  "lang": "en",
+  "generator": "html2idml",
+  "created": "2026-11-12 18:05:32",
+  "fonts_used": {
+   "Segoe UI": [
+    "Bold",
+    "Bold Italic",
+    "Italic",
+    "Regular"
+   ],
+   "Georgia": [
+    "Bold"
+   ],
+   "Consolas": [
+    "Regular"
+   ]
+  },
+  "fonts_packaged": [
+   "Segoe UI",
+   "Georgia",
+   "Consolas"
+  ],
+  "fonts_not_installed": [],
+  "parse_seconds": 0.518
+ },
+ "warnings": [
+  "converted WEBP image to PNG for InDesign: img/photo.webp"
+ ],
+ "ir_version": 1
+}

@@ -1,0 +1,64 @@
+# html2idml configuration - every key is optional (defaults shown in html2idml/config.py)
+page:
+  size: A4                 # A4 | Letter | "210mm 297mm" | "A5 landscape"  (null -> CSS @page, then A4)
+  margins: "20mm 15mm 20mm 15mm"   # top right bottom left (null -> CSS @page margin)
+  columns: 1
+  gutter: 12pt
+  facing_pages: false
+  page_count: null         # null = estimate; run <name>.fit-pages.jsx in InDesign for the exact count
+
+css:
+  media: screen            # screen = what the browser shows; print = @media print rules
+  viewport_width: 1280     # px, drives media queries and vw units
+  extra_stylesheets: []    # [overrides.css]  applied after the page's own CSS
+  user_css: |
+    /* CSS applied last, e.g. hide navigation */
+    nav, .cookie-banner { display: none }
+
+fonts:
+  map:                     # CSS family -> InDesign family
+    Helvetica Neue: Helvetica
+    Roboto: Roboto
+  generic:                 # what generic families become
+    serif: Minion Pro
+    sans-serif: Myriad Pro
+    monospace: Consolas
+  style_names:             # exact InDesign style names per family (weight -> name, "i" = italic)
+    Segoe UI: { "300": Light, "600": Semibold, "700": Bold, "700i": Bold Italic }
+  weight_mode: simple      # simple (Regular/Bold) | full (Thin, Light, Medium, SemiBold, ...)
+  check_installed: true    # use the first installed family of each CSS font stack
+
+styles:
+  base_style: Body
+  names:                   # CSS selector -> paragraph style name
+    h1: Heading 1
+    h2: Heading 2
+    p: Body Text
+    p.lead: Lead
+    .note p: Note
+  char_names:              # CSS selector -> character style name
+    strong, b: Bold
+    em, i: Italic
+    a: Hyperlink
+  overrides:               # force properties on a paragraph style (IR property names)
+    Heading 1: { font_family: Minion Pro, font_size: 30, color: Black }
+  char_overrides: {}
+  heading_keep_with_next: 2
+  hyphenation: false
+
+images:
+  embed: false             # true = also embed image data in the IDML (experimental)
+  download_remote: false   # true = fetch http(s) images and stylesheets
+  convert_unsupported: true
+  inline_svg: true
+
+idml:
+  dom_version: "16.0"      # "8.0" for InDesign CS6
+  color_space: RGB         # RGB | CMYK
+  ruler_units: Millimeters # Points | Millimeters | Inches | Picas | Centimeters
+
+output:
+  write_ir: true           # keep <name>.ir.json next to the .idml
+  zip_package: false       # also produce <name>-package.zip (idml + Links + fonts + script)
+
+plugins: []                # [examples/plugin_example.py]

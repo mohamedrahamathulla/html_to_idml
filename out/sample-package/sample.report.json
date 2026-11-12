@@ -1,0 +1,205 @@
+{
+  "outputs": {
+    "idml": "out\\sample\\sample.idml",
+    "jsx": "out\\sample\\sample.fit-pages.jsx",
+    "ir": "out\\sample\\sample.ir.json"
+  },
+  "stats": {
+    "paragraphs": 39,
+    "tables": 1,
+    "images": 4,
+    "hyperlinks": 1,
+    "pages": 3
+  },
+  "paragraph_styles": 19,
+  "character_styles": 15,
+  "colors": 14,
+  "assets": [
+    {
+      "id": "img1",
+      "kind": "image",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Links\\logo.png",
+      "source": "img/logo.png",
+      "format": "PNG"
+    },
+    {
+      "id": "img2",
+      "kind": "image",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Links\\hero.jpg",
+      "source": "img/hero.jpg",
+      "format": "JPEG"
+    },
+    {
+      "id": "img3",
+      "kind": "image",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Links\\photo.png",
+      "source": "img/photo.webp",
+      "format": "PNG"
+    },
+    {
+      "id": "img4",
+      "kind": "image",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Links\\inline-svg.svg",
+      "source": "<svg>",
+      "format": "SVG"
+    },
+    {
+      "id": "font5",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\segoeui.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\segoeui.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font6",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\seguibl.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\seguibl.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font7",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\seguibli.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\seguibli.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font8",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\segoeuib.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\segoeuib.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font9",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\segoeuiz.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\segoeuiz.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font10",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\segoeuii.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\segoeuii.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font11",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\segoeuil.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\segoeuil.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font12",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\seguili.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\seguili.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font13",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\seguisb.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\seguisb.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font14",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\seguisbi.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\seguisbi.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font15",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\segoeuisl.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\segoeuisl.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font16",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\seguisli.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\seguisli.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font17",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\georgia.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\georgia.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font18",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\georgiab.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\georgiab.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font19",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\georgiaz.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\georgiaz.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font20",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\georgiai.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\georgiai.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font21",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\consola.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\consola.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font22",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\consolab.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\consolab.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font23",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\consolaz.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\consolaz.ttf",
+      "format": "TTF"
+    },
+    {
+      "id": "font24",
+      "kind": "font",
+      "file": "C:\\Users\\e416341\\Music\\html_to_idml\\out\\sample\\Document fonts\\consolai.ttf",
+      "source": "C:\\WINDOWS\\Fonts\\consolai.ttf",
+      "format": "TTF"
+    }
+  ],
+  "fonts_used": {
+    "Segoe UI": [
+      "Bold",
+      "Bold Italic",
+      "Italic",
+      "Regular"
+    ],
+    "Georgia": [
+      "Bold"
+    ],
+    "Consolas": [
+      "Regular"
+    ]
+  },
+  "warnings": [
+    "converted WEBP image to PNG for InDesign: img/photo.webp"
+  ],
+  "write_seconds": 0.03
+}

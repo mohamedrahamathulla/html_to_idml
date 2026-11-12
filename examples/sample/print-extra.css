@@ -1,0 +1,3 @@
+blockquote { font-style: italic; color: #444; margin-left: 2em; }
+li::marker { color: red; }
+.tag::before { content: "#"; color: #999; }

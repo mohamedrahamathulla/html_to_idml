@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>html2idml Sample Report</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .highlight { background-color: yellow; }
+  .red { color: #c00; font-weight: 600; }
+</style>
+</head>
+<body>
+<header>
+  <img src="img/logo.png" width="48" alt="logo"> <span class="caps">Annual Report 2026</span>
+</header>
+<h1>Converting HTML to InDesign</h1>
+<p class="lead">A complete, styled document — fonts, colours, images, tables and links — moved into IDML.</p>
+
+<p>This paragraph has <strong>bold</strong>, <em>italic</em>, <strong><em>bold italic</em></strong>,
+<u>underline</u>, <s>strike</s>, <span class="red">red semibold</span>, <mark>marked</mark>,
+<span class="highlight">highlighted</span>, H<sub>2</sub>O and E=mc<sup>2</sup>.
+A <a href="https://www.adobe.com/products/indesign.html">hyperlink to InDesign</a> and
+<code>inline code</code>.<br>A forced line break above, then a <span class="tag">hashtag</span>.</p>
+
+<div class="note"><p><strong>Note:</strong> this box uses a background colour and a left border.</p></div>
+
+<h2>Lists</h2>
+<ul>
+  <li>First bullet item</li>
+  <li>Second item with <b>bold</b>
+    <ul><li>Nested circle bullet</li><li>Another nested item</li></ul>
+  </li>
+  <li>Third item</li>
+</ul>
+<ol start="3">
+  <li>Numbered starts at three</li>
+  <li>Four</li>
+</ol>
+
+<h2>Image</h2>
+<figure class="center">
+  <img src="img/hero.jpg" alt="hero" style="width: 80%">
+  <figcaption>Figure 1. A placed JPEG at 150 ppi, scaled to 80% width.</figcaption>
+</figure>
+<p>Inline WEBP (converted to PNG): <img src="img/photo.webp" width="80"> and inline SVG
+<svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#1e5aa0"/></svg>.</p>
+
+<h2>Table</h2>
+<table class="data">
+  <thead><tr><th>Region</th><th>Q1</th><th>Q2</th><th>Total</th></tr></thead>
+  <tbody>
+    <tr><td>North</td><td>120</td><td>140</td><td>260</td></tr>
+    <tr><td>South</td><td>98</td><td>110</td><td>208</td></tr>
+    <tr><td colspan="3"><em>Spanning three columns</em></td><td>468</td></tr>
+  </tbody>
+</table>
+
+<blockquote>“Design is intelligence made visible.” — Alina Wheeler</blockquote>
+<pre>def hello():
+    print("pre-formatted   spacing kept")</pre>
+<hr>
+<section class="chapter">
+  <h2>New chapter on a new page</h2>
+  <p>Text after a CSS <code>break-before: page</code>. &nbsp;Non-breaking space kept.</p>
+  <p data-idml-style="Custom Body" data-idml-props='{"align": "justify"}'>This paragraph uses a style name forced from the HTML with data-idml-style, and a justification override from data-idml-props. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</section>
+<p class="screen-only">Visible on screen media.</p>
+</body>
+</html>
