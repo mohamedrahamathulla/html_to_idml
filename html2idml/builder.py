@@ -649,18 +649,16 @@ class Builder:
         return _r(max(1.0, w), 2), _r(max(1.0, h), 2)
 
     def add_image(self, el, cs, ictx, bctx, owner):
-        src = el.get("src") or ""
-        if not src and el.get("srcset"):
-            src = el.get("srcset").split(",")[0].strip().split(" ")[0]
-        if not src:
-            for k in ("data-src", "data-lazy-src", "data-original"):
-                if el.get(k):
-                    src = el.get(k)
-                    break
-        asset = self.assets.image(src, self.base) if src else None
+        candidates = image_candidates(el)
+        asset = None
+        for src in candidates:
+            asset = self.assets.image(src, self.base)
+            if asset is not None:
+                break
         if asset is None:
+            if not candidates:
+                self.warn("an <img> has no src - left out")
             alt = el.get("alt")
-            self.warn(f"image not available: {src or '(no src)'}")
             if alt:
                 self.add_text(alt, cs, ictx, bctx, owner)
             return
@@ -1020,6 +1018,48 @@ class Builder:
                 doc.character_styles[sname].props.update(props)
             else:
                 self.warn(f"styles.char_overrides: no character style named {sname!r}")
+
+
+def _srcset_best(srcset: str) -> Optional[str]:
+    """Largest candidate of a srcset ("a.jpg 480w, b.jpg 1200w" / "a.jpg 1x, b.jpg 2x")."""
+    best, best_score = None, -1.0
+    for part in re.split(r",\s+(?=\S)", (srcset or "").strip()):
+        bits = part.strip().split()
+        if not bits:
+            continue
+        url, score = bits[0].rstrip(","), 1.0
+        if len(bits) > 1:
+            m = re.fullmatch(r"(\d*\.?\d+)([wxh])", bits[1].lower())
+            if m:
+                score = float(m.group(1)) * (1 if m.group(2) != "x" else 1000)
+        if score > best_score:
+            best, best_score = url, score
+    return best
+
+
+def image_candidates(el) -> List[str]:
+    """Image URLs to try, best first: real lazy-load source, largest srcset entry, src."""
+    src = (el.get("src") or "").strip()
+    placeholder = (not src or (src.startswith("data:") and len(src) < 600)
+                   or src.lower().endswith(("blank.gif", "spacer.gif", "pixel.gif", "placeholder.png")))
+    lazy = [el.get(k).strip() for k in ("data-src", "data-lazy-src", "data-original", "data-lazy",
+                                        "data-url") if el.get(k)]
+    sets = [_srcset_best(el.get(k)) for k in ("srcset", "data-srcset") if el.get(k)]
+    # <picture><source srcset=…><img></picture>  (the HTML parser may nest <img> inside <source>)
+    picture = next((a for a in list(el.iterancestors())[:3]
+                    if isinstance(a.tag, str) and a.tag.lower() == "picture"), None)
+    if picture is not None:
+        for source in picture.iter("source"):
+            typ = (source.get("type") or "").lower()
+            if typ and not any(t in typ for t in ("jpeg", "jpg", "png", "webp", "gif", "avif", "svg")):
+                continue
+            sets.append(_srcset_best(source.get("srcset") or source.get("data-srcset") or ""))
+    order = (lazy + sets + ([src] if src else [])) if placeholder else (sets + [src] + lazy)
+    out = []
+    for u in order:
+        if u and u not in out:
+            out.append(u)
+    return out
 
 
 def _int(v, default):

@@ -111,6 +111,29 @@ def test_config_style_names_and_overrides():
     assert doc.paragraph_styles["Heading 1"].props["font_family"] == "Minion Pro"
 
 
+def test_image_candidates_lazy_srcset_picture():
+    from lxml import html
+    from html2idml.builder import image_candidates
+    e = html.fromstring('<img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-src="real.jpg" '
+                        'srcset="s.jpg 300w, l.jpg 1600w">')
+    assert image_candidates(e)[:2] == ["real.jpg", "l.jpg"]
+    e = html.fromstring('<div><picture><source type="image/webp" srcset="p.webp 2x">'
+                        '<img src="p.jpg"></picture></div>').find(".//img")
+    assert image_candidates(e) == ["p.webp", "p.jpg"]
+
+
+def test_url_map_replaces_remote_image():
+    from PIL import Image
+    tmp = Path(tempfile.mkdtemp())
+    Image.new("RGB", (50, 40), "blue").save(tmp / "saved.jpg")
+    (tmp / "t.html").write_text('<img src="https://blocked.invalid/photo.jpg">', encoding="utf-8")
+    cfg = Config.load({"fonts": {"check_installed": False},
+                       "images": {"url_map": {"https://blocked.invalid/photo.jpg": str(tmp / "saved.jpg")}}})
+    doc = html_to_ir(tmp / "t.html", tmp / "out", cfg)
+    img = [r for r in paras(doc)[0].runs if r.type == "image"]
+    assert img and not any("blocked.invalid" in w for w in doc.warnings)
+
+
 def test_empty_and_hidden():
     doc, rep, _ = build("<body><div style='display:none'>x</div><script>var a</script></body>")
     assert paras(doc) == [] and rep["stats"]["pages"] == 1

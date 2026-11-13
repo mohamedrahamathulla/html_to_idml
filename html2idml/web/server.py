@@ -153,6 +153,29 @@ def create_app(workdir: Path, workers: int = 2, max_upload_mb: int = 1024) -> Fl
         jobs.submit(job)
         return jsonify(job)
 
+    @app.post("/api/jobs/<job_id>/replace-images")
+    def replace_images(job_id):
+        """Upload local copies for images that could not be downloaded, then re-run."""
+        job = job_or_404(job_id)
+        if job["status"] in ("queued", "running"):
+            abort(409, "job is still running")
+        urls = request.form.getlist("url")
+        files = request.files.getlist("file")
+        if not urls or len(urls) != len(files):
+            abort(400, "send one file per url")
+        folder = jobs.dir(job_id) / "input" / "_replaced"
+        folder.mkdir(parents=True, exist_ok=True)
+        url_map = job.setdefault("url_map", {})
+        for i, (url, f) in enumerate(zip(urls, files)):
+            name = safe_rel(f.filename or f"image-{i}.jpg")
+            fname = f"{len(url_map) + 1:03d}-{name.name if name else 'image.jpg'}"
+            f.save(folder / fname)
+            url_map[url.strip()] = f"_replaced/{fname}"
+        job["version"] = int(job.get("version", 1)) + 1
+        jobs.log(job, f"{len(urls)} replacement image(s) uploaded; re-converting")
+        jobs.submit(job)
+        return jsonify(job)
+
     # ------------------------------------------------------------------ files
     @app.get("/api/jobs/<job_id>/download/<path:rel>")
     def download(job_id, rel):

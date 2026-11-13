@@ -68,7 +68,13 @@ function syncCustomSize() {
   const custom = form.page_size.value === "custom";
   $$(".custom-size").forEach(e => e.classList.toggle("hidden", !custom));
 }
-writeForm(store.get("options", DEFAULT_OPTS));
+const OPTS_VERSION = 2;   // v2: remote images are downloaded by default
+function savedOptions() {
+  const o = Object.assign({}, DEFAULT_OPTS, store.get("options", {}));
+  if (store.get("options_v", 1) < OPTS_VERSION) { o.download_remote = true; store.set("options", o); store.set("options_v", OPTS_VERSION); }
+  return o;
+}
+writeForm(savedOptions());
 form.addEventListener("input", () => { store.set("options", readForm()); syncCustomSize(); });
 $("#resetOpts").onclick = () => { writeForm(DEFAULT_OPTS); store.set("options", DEFAULT_OPTS); toast("Options reset"); };
 
@@ -187,7 +193,7 @@ function setRerunMode(job) {
   else { h.textContent = "New conversion"; $("#convertBtn").textContent = "Convert to IDML";
     $("#srcTabs").closest(".card").classList.remove("hidden"); }
 }
-$("#newBtn").onclick = () => { rerunTarget = null; setRerunMode(null); writeForm(store.get("options", DEFAULT_OPTS)); showView("new"); };
+$("#newBtn").onclick = () => { rerunTarget = null; setRerunMode(null); writeForm(savedOptions()); showView("new"); };
 
 /* ---------------- views ---------------- */
 function showView(v) {
@@ -301,7 +307,12 @@ $("#deleteBtn").onclick = async () => {
   catch (e) { toast(e.message, true); }
 };
 $("#rerunBtn").onclick = () => {
-  rerunTarget = JOB.id; writeForm(Object.assign({}, DEFAULT_OPTS, JOB.options || {}));
+  rerunTarget = JOB.id;
+  const o = Object.assign({}, DEFAULT_OPTS, JOB.options || {});
+  if ((JOB.warnings || []).some(w => /remote (resource|file) skipped/.test(w))) {
+    o.download_remote = true; toast("Remote image downloads switched on for this re-run");
+  }
+  writeForm(o);
   setRerunMode(JOB); showView("new"); currentJob = null; renderJobList();
 };
 
@@ -331,7 +342,18 @@ function renderOverview(el) {
   const fonts = {};
   (j.results || []).forEach(r => Object.entries(r.fonts_used || {}).forEach(([f, s]) => { fonts[f] = new Set([...(fonts[f] || []), ...s]); }));
   const opts = j.options || {};
+  const missing = j.missing_urls || [];
   el.innerHTML = `
+    ${missing.length && j.status === "done" ? `<h3>Missing images (${missing.length})</h3>
+      <p class="muted small">These could not be loaded. Open each link in your browser, save the image
+      (right-click › Save image as…), choose the saved file here and re-convert - it is placed exactly where the original was.</p>
+      <div class="scroll"><table class="tbl" id="missingTbl"><tr><th>Image</th><th>Reason</th><th>Your copy</th></tr>
+      ${missing.map((m, i) => `<tr><td style="max-width:420px;word-break:break-all">
+          ${/^https?:/.test(m.url) ? `<a href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.url)}</a>` : esc(m.url)}</td>
+        <td class="muted">${esc(m.reason)}</td>
+        <td><input type="file" accept="image/*,.svg,.pdf,.eps,.psd,.tif,.tiff" data-url="${esc(m.url)}"></td></tr>`).join("")}
+      </table></div>
+      <div class="actions"><button class="btn primary" id="replaceBtn" disabled>Re-convert with these images</button></div>` : ""}
     ${j.warnings.length ? `<h3>Warnings (${j.warnings.length})</h3><ul class="warn-list">${j.warnings.slice(0, 200).map(w => `<li>${esc(w)}</li>`).join("")}</ul>`
       : (j.status === "done" ? `<p>✔ No warnings.</p>` : "")}
     ${Object.keys(fonts).length ? `<h3>Fonts used</h3><p>${Object.entries(fonts).map(([f, s]) =>
@@ -347,6 +369,21 @@ function renderOverview(el) {
       <li>Open the <b>.idml</b> in InDesign (File › Open).</li>
       <li>Optional: run the <b>.fit-pages.jsx</b> script (Window › Utilities › Scripts) to make the page count exact.</li>
     </ol>`;
+  const rbtn = $("#replaceBtn", el);
+  if (rbtn) {
+    const inputs = $$("#missingTbl input[type=file]", el);
+    inputs.forEach(inp => inp.onchange = () => {
+      const n = inputs.filter(i => i.files.length).length;
+      rbtn.disabled = !n; rbtn.textContent = n ? `Re-convert with ${n} image(s)` : "Re-convert with these images";
+    });
+    rbtn.onclick = async () => {
+      const fd = new FormData();
+      inputs.filter(i => i.files.length).forEach(i => { fd.append("url", i.dataset.url); fd.append("file", i.files[0], i.files[0].name); });
+      rbtn.disabled = true; rbtn.textContent = "Uploading…";
+      try { await api(`/api/jobs/${j.id}/replace-images`, { method: "POST", body: fd }); toast("Re-converting with your images…"); openJob(j.id); }
+      catch (e) { toast(e.message, true); rbtn.disabled = false; }
+    };
+  }
   const btn = $("#entriesRerun", el);
   if (btn) btn.onclick = async () => {
     const entries = $$(".entryChk", el).filter(c => c.checked).map(c => c.value);

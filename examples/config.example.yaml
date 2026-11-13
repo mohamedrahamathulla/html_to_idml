@@ -48,7 +48,7 @@ styles:
 
 images:
   embed: false             # true = also embed image data in the IDML (experimental)
-  download_remote: false   # true = fetch http(s) images and stylesheets
+  download_remote: true    # fetch http(s) images and stylesheets (parallel, browser-like)
   convert_unsupported: true
   inline_svg: true
 

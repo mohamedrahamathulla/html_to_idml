@@ -36,7 +36,7 @@ def _common(p):
                    help="link images from Links/ instead of embedding them in the IDML")
     p.add_argument("--no-font-package", action="store_true",
                    help="do not copy installed font files into Document fonts/")
-    p.add_argument("--remote", action="store_true", help="download http(s) images/CSS")
+    p.add_argument("--no-remote", action="store_true", help="do not download http(s) images/CSS")
     p.add_argument("--cmyk", action="store_true", help="create CMYK swatches instead of RGB")
     p.add_argument("--dom-version", help='IDML DOMVersion (default 16.0; "8.0" for CS6)')
     p.add_argument("--zip", action="store_true", help="also write a zip package with all assets")
@@ -50,7 +50,7 @@ def _cfg(a) -> Config:
         "page.page_count": a.pages, "css.media": a.media, "css.viewport_width": a.viewport,
         "images.embed": False if a.link_images else None,
         "fonts.package_fonts": False if a.no_font_package else None,
-        "images.download_remote": True if a.remote else None,
+        "images.download_remote": False if a.no_remote else None,
         "idml.color_space": "CMYK" if a.cmyk else None, "idml.dom_version": a.dom_version,
         "output.zip_package": True if a.zip else None,
     }

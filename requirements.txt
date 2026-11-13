@@ -4,3 +4,4 @@ tinycss2>=1.2
 Pillow>=9.0
 PyYAML>=6.0
 Flask>=2.2
+truststore>=0.9   # use the Windows certificate store for https downloads

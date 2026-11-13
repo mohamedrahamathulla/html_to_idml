@@ -57,7 +57,8 @@ DEFAULTS: Dict[str, Any] = {
     },
     "images": {
         "embed": True,            # embed image data inside the IDML (travels with the file)
-        "download_remote": False, # fetch http(s) images/CSS
+        "download_remote": True,  # fetch http(s) images/CSS (in parallel, browser-like)
+        "url_map": {},            # {"https://site/img.jpg": "C:/saved/img.jpg"} local replacements
         "convert_unsupported": True,  # WEBP/AVIF/ICO -> PNG
         "inline_svg": True,       # export inline <svg> as placed .svg graphics
         "default_ppi": 72,

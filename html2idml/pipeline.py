@@ -131,7 +131,8 @@ def html_to_ir(source: Union[str, Path], out_dir: Union[str, Path], config: Conf
     warn = Warnings(callback=on_warning)
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    resolver = Resolver(allow_remote=bool(cfg["images"].get("download_remote")), warn=warn)
+    resolver = Resolver(allow_remote=bool(cfg["images"].get("download_remote")), warn=warn,
+                        url_map=cfg["images"].get("url_map") or {})
 
     src = str(source)
     if html_text is not None:
@@ -171,6 +172,24 @@ def html_to_ir(source: Union[str, Path], out_dir: Union[str, Path], config: Conf
             if r is not None:
                 root = r
 
+    # download every remote image/stylesheet in parallel up front (no lag on image-heavy pages)
+    if resolver.allow_remote:
+        from .builder import image_candidates
+        urls = []
+        for img in root.iter("img"):
+            cands = image_candidates(img)
+            if cands:
+                kind, loc = resolver.join(cands[0], base)
+                if kind == "url":
+                    urls.append(loc)
+        for link in root.iter("link"):
+            if "stylesheet" in (link.get("rel") or "").lower() and link.get("href"):
+                kind, loc = resolver.join(link.get("href"), base)
+                if kind == "url":
+                    urls.append(loc)
+        if urls:
+            progress(f"Downloading {len(set(urls))} remote file(s)", 0.08)
+            resolver.prefetch(urls, referer=base if is_url(base) else None)
     progress("Loading stylesheets", 0.12)
     css_cfg = cfg["css"]
     vw = float(css_cfg.get("viewport_width") or 1280)

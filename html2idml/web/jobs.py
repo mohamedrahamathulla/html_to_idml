@@ -124,7 +124,7 @@ def options_to_config(o: Dict[str, Any], source_kind: str = "files") -> Config:
                    "char_names": _lines_map(o.get("char_style_names", "")),
                    "hyphenation": bool(o.get("hyphenation", False))},
         "images": {"embed": bool(o.get("embed_images", True)),
-                   "download_remote": bool(o.get("download_remote", False)) or source_kind == "url",
+                   "download_remote": bool(o.get("download_remote", True)) or source_kind == "url",
                    "inline_svg": bool(o.get("inline_svg", True))},
         "links": {"hyperlinks": bool(o.get("hyperlinks", True))},
         "idml": {"dom_version": str(o.get("dom_version") or "16.0"),
@@ -231,6 +231,9 @@ class JobManager:
         t0 = time.time()
         try:
             cfg = options_to_config(job["options"], job["source"].get("kind", "files"))
+            cfg["images"]["url_map"] = dict(cfg["images"].get("url_map") or {},
+                                            **{u: str(d / "input" / rel)
+                                               for u, rel in (job.get("url_map") or {}).items()})
             entries = job["entries"]
             n = max(1, len(entries))
             last_stage = [None]
@@ -258,6 +261,7 @@ class JobManager:
                 job["results"].append(self._result(entry, stem, out_root, report, time.time() - t1))
             if n > 1:
                 self._zip_all(job)
+            job["missing_urls"] = missing_urls(job["warnings"])
             job.update(status="done", stage="Done", progress=1.0)
             self.log(job, f"Finished in {time.time() - t0:.1f}s")
         except Exception as e:  # noqa: BLE001 - reported to the UI
@@ -331,6 +335,26 @@ class JobManager:
             job.update(status="failed", stage="Rebuild failed", error=f"{type(e).__name__}: {e}")
             self.log(job, traceback.format_exc(), "error")
         self.save(job)
+
+
+_MISSING_RE = re.compile(r"(?:could not download|remote file skipped[^:]*:|file not found:)\s*(\S+?)(?::\s|$)")
+
+
+def missing_urls(warnings: List[str]) -> List[Dict[str, str]]:
+    """Remote/local images that could not be loaded, with the reason, for the UI."""
+    out, seen = [], set()
+    for w in warnings:
+        msg = w.split(": ", 1)[1] if re.match(r"^[^:/]+\.x?html?: ", w) else w
+        m = _MISSING_RE.search(msg)
+        if not m:
+            continue
+        url = m.group(1)
+        if url in seen or not re.search(r"\.(jpe?g|png|gif|webp|avif|svg|tiff?|bmp)(\?|$)|^https?://", url, re.I):
+            continue
+        seen.add(url)
+        reason = msg[m.end():].strip() or ("download switched off" if "skipped" in msg else "not found")
+        out.append({"url": url, "reason": reason})
+    return out
 
 
 def _stem(entry: str, is_url: bool) -> str:
